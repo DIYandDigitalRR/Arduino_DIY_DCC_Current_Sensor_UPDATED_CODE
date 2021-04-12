@@ -21,13 +21,14 @@ OCCUPANCY Occupancy = ST_CLEAR;//default state
 void loop(){
   int valA1;
   int result = 0;
-  for (int i=0; i < numSamples; ++i){
+  for (int i=1; i < numSamples; ++i){
     valA1 = analogRead(A0);//reads analog pin
     result +=valA1;//adds new reading to variable 'result'
-    value=result/i;//averages readings
-    Serial.println(value);//displays average reading
+ delay(10);//reading every .01 seconds
   }
-  delay(10);//reading every .01 seconds
+ 
+  value=result/numSamples;//averages readings
+    Serial.println(value);//displays average reading
 
 switch (Occupancy)
 {
